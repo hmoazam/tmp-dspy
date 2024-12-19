@@ -110,3 +110,4 @@ jobs:
         with:
           commit_message: Update versions
           create_branch: true
+          branch: release-${{ needs.extract-tag.outputs.version }}
