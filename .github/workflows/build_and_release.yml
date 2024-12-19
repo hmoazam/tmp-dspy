@@ -111,13 +111,13 @@ jobs:
           commit_message: Update versions
           create_branch: true
           branch: release-${{ needs.extract-tag.outputs.version }}
-      - name: Checkout main branch  
-        run: |  
-          git fetch origin  
-          git checkout main  
-      - name: Merge release branch into main  
-        run: |  
-          git merge --no-ff release-${{ needs.extract-tag.outputs.version }}  
-      - name: Push changes to main  
-        run: |  
-          git push origin main  
+      # - name: Checkout main branch  
+      #   run: |  
+      #     git fetch origin  
+      #     git checkout main  
+      # - name: Merge release branch into main  
+      #   run: |  
+      #     git merge --no-ff release-${{ needs.extract-tag.outputs.version }}  
+      # - name: Push changes to main  
+      #   run: |  
+      #     git push origin main  
