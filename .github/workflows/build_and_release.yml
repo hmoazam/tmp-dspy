@@ -56,7 +56,6 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1 # This requires a trusted publisher to be setup in pypi/testpypi
         with: 
           repository-url: https://test.pypi.org/legacy/
-      - uses: stefanzweifel/git-auto-commit-action@v5 # auto commit changes to main
 
   build-and-publish-pypi:
     needs: [extract-tag, build-and-publish-test-pypi]
@@ -68,6 +67,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with: 
+          ref: ${{ github.head_ref }}
       - name: Set up Python 3.9
         uses: actions/setup-python@v3
         with:
@@ -106,3 +107,6 @@ jobs:
         with: 
           attestations: false
       - uses: stefanzweifel/git-auto-commit-action@v5 # auto commit changes to main
+        with:
+          commit_message: Update versions
+          branch: ${{ github.head_ref }}
