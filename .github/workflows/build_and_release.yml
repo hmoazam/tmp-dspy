@@ -31,7 +31,7 @@ jobs:
         with:
           python-version: "3.9"
       - name: Install dependencies
-        run: python3 -m pip install setuptools wheel twine semver packaging
+        run: python3 -m pip install --upgrade setuptools wheel twine semver packaging
       - name: Get correct version for TestPyPI release  
         id: check_version  
         run: |  
@@ -71,7 +71,7 @@ jobs:
         with:
           python-version: "3.9"
       - name: Install dependencies
-        run: python3 -m pip install setuptools wheel twine
+        run: python3 -m pip install --upgrade setuptools wheel twine
       - name: Update version in setup.py (dspy)
         run: sed -i '/#replace_package_version_marker/{n;s/version="[^"]*"/version="${{ needs.extract-tag.outputs.version }}"/;}' dspy/__metadata__.py
       - name: Update version in pyproject.toml
