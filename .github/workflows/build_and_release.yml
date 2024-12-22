@@ -81,7 +81,7 @@ jobs:
         run: |
           sed -i '/#replace_package_name_marker/{n;s/name="[^"]*"/name="dspy-ai-hmoazam"/;}' ./dspy/__metadata__.py
       - name: Echo __metadata__.py contents  
-        run: cat .dspy/__metadata__.py
+        run: cat ./dspy/__metadata__.py
       - name: Update package name in pyproject.toml
         run: sed -i '/#replace_package_name_marker/{n;s/name="[^"]*"/name="dspy-ai-hmoazam"/;}' pyproject.toml
       - name: Build a binary wheel
