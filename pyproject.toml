@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 #replace_package_name_marker
-name="test-pkg-hmoazam"
+name="dspy-ai-hmoazam"
 #replace_package_version_marker
-version="2.7.25"
+version="5.11.35"
 description = "DSPy"
 readme = "README.md"
 authors = [{ name = "Omar Khattab", email = "okhattab@stanford.edu" }]
