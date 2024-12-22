@@ -10,9 +10,9 @@ with open("requirements.txt", encoding="utf-8") as f:
 
 setup(	
     #replace_package_name_marker
-    name="dspy",
+    name="test-pkg-hmoazam",
     #replace_package_version_marker
-    version="2.5.43", 	
+    version="5.11.32", 	
     description="DSPy",	
     long_description=long_description,	
     long_description_content_type="text/markdown",	
