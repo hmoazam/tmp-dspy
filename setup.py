@@ -9,6 +9,7 @@ with open("README.md", encoding="utf-8") as f:
 with open("requirements.txt", encoding="utf-8") as f:
     requirements = f.read().splitlines()
 
+
 metadata = {}
 here = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(here, "dspy", "__metadata__.py"), "r", encoding="utf-8") as f:
