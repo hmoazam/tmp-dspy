@@ -20,4 +20,4 @@ setup(
     python_requires=">=3.9",
     #replace_dspy_version_marker
     install_requires=["dspy>=2.5.3"]
-)	
+)
