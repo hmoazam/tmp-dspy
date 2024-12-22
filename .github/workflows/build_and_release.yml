@@ -117,7 +117,7 @@ jobs:
           git config --global user.name "Github Actions"
       - name: Merge release branch into main  
         run: |  
-          git merge --no-ff release-${{ needs.extract-tag.outputs.version }}          
+          git merge release-${{ needs.extract-tag.outputs.version }}          
       - name: Push changes to main
         run: |  
           git push origin main  
