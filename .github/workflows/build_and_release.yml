@@ -98,6 +98,8 @@ jobs:
       - name: Update dspy dependency version in setup.py  
         run: |
           sed -i '/#replace_dspy_version_marker/{n;s/dspy==[^"]*/dspy>=${{ needs.extract-tag.outputs.version }}/;}' ./dspy/.internal_dspyai/setup.py  
+      - name: Echo dspyai setup.py contents  
+        run: cat ./dspy/.internal_dspyai/setup.py
       - name: Build a binary wheel
         run: python3 ./dspy/.internal_dspyai/setup.py sdist bdist_wheel
       - name: Publish distribution 📦 to PyPI (dspy-ai)
