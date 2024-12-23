@@ -72,24 +72,24 @@ jobs:
           python-version: "3.9"
       - name: Install dependencies
         run: python3 -m pip install --upgrade setuptools wheel twine
-      - name: Update version in setup.py (dspy)
-        run: sed -i '/#replace_package_version_marker/{n;s/__version__="[^"]*"/__version__="${{ needs.extract-tag.outputs.version }}"/;}' ./dspy/__metadata__.py
-      - name: Update version in pyproject.toml
-        run: sed -i '/#replace_package_version_marker/{n;s/version="[^"]*"/version="${{ needs.extract-tag.outputs.version }}"/;}' pyproject.toml
-      # Publish to dspy
-      - name: Update package name in setup.py  
-        run: |
-          sed -i '/#replace_package_name_marker/{n;s/__name__="[^"]*"/__name__="test-pkg-hmoazam"/;}' ./dspy/__metadata__.py
-      - name: Echo __metadata__.py contents  
-        run: cat ./dspy/__metadata__.py
-      - name: Update package name in pyproject.toml
-        run: sed -i '/#replace_package_name_marker/{n;s/name="[^"]*"/name="test-pkg-hmoazam"/;}' pyproject.toml
-      - name: Build a binary wheel
-        run: python3 setup.py sdist bdist_wheel
-      - name: Publish distribution 📦 to PyPI (dspy)
-        uses: pypa/gh-action-pypi-publish@release/v1 # This requires a trusted publisher to be setup in pypi
-        with: 
-          attestations: false
+      # - name: Update version in setup.py (dspy)
+      #   run: sed -i '/#replace_package_version_marker/{n;s/__version__="[^"]*"/__version__="${{ needs.extract-tag.outputs.version }}"/;}' ./dspy/__metadata__.py
+      # - name: Update version in pyproject.toml
+      #   run: sed -i '/#replace_package_version_marker/{n;s/version="[^"]*"/version="${{ needs.extract-tag.outputs.version }}"/;}' pyproject.toml
+      # # Publish to dspy
+      # - name: Update package name in setup.py  
+      #   run: |
+      #     sed -i '/#replace_package_name_marker/{n;s/__name__="[^"]*"/__name__="test-pkg-hmoazam"/;}' ./dspy/__metadata__.py
+      # - name: Echo __metadata__.py contents  
+      #   run: cat ./dspy/__metadata__.py
+      # - name: Update package name in pyproject.toml
+      #   run: sed -i '/#replace_package_name_marker/{n;s/name="[^"]*"/name="test-pkg-hmoazam"/;}' pyproject.toml
+      # - name: Build a binary wheel
+      #   run: python3 setup.py sdist bdist_wheel
+      # - name: Publish distribution 📦 to PyPI (dspy)
+      #   uses: pypa/gh-action-pypi-publish@release/v1 # This requires a trusted publisher to be setup in pypi
+      #   with: 
+      #     attestations: false
       # Publish to dspy-ai
       - name: Update version in setup.py (dspy-ai)
         run: sed -i '/#replace_package_version_marker/{n;s/version="[^"]*"/version="${{ needs.extract-tag.outputs.version }}"/;}' ./dspy/.internal_dspyai/setup.py
@@ -100,7 +100,9 @@ jobs:
       #     sed -i '/#replace_dspy_version_marker/{n;s/dspy>=[^"]*/dspy>=${{ needs.extract-tag.outputs.version }}/;}' ./dspy/.internal_dspyai/setup.py  
       - name: Echo dspyai setup.py contents  
         run: cat ./dspy/.internal_dspyai/setup.py
-      - name: Build a binary wheel
+      # - name: Build a binary wheel
+      #   run: python3 ./dspy/.internal_dspyai/setup.py sdist bdist_wheel
+      - name: Build a binary wheel  
         run: python3 ./dspy/.internal_dspyai/setup.py sdist bdist_wheel
       - name: Publish distribution 📦 to PyPI (dspy-ai)
         uses: pypa/gh-action-pypi-publish@release/v1 # This requires a trusted publisher to be setup in pypi
