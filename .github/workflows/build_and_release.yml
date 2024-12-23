@@ -90,20 +90,20 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1 # This requires a trusted publisher to be setup in pypi
         with: 
           attestations: false
-        # Publish to dspy-ai
-      # - name: Update version in setup.py (dspy-ai)
-      #   run: sed -i '/#replace_package_version_marker/{n;s/version="[^"]*"/version="${{ needs.extract-tag.outputs.version }}"/;}' ./dspy/.internal_dspyai/setup.py
-      # - name: Update package name in setup.py  
-      #   run: sed -i '/#replace_package_name_marker/{n;s/name="[^"]*"/name="dspy-ai-hmoazam"/;}' ./dspy/.internal_dspyai/setup.py
-      # - name: Update dspy dependency version in setup.py  
-      #   run: |
-      #     sed -i '/#replace_dspy_version_marker/{n;s/dspy==[^"]*/dspy>=${{ needs.extract-tag.outputs.version }}/;}' ./dspy/.internal_dspyai/setup.py  
-      # - name: Build a binary wheel
-      #   run: python3 ./dspy/.internal_dspyai/setup.py sdist bdist_wheel
-      # - name: Publish distribution 📦 to PyPI (dspy-ai)
-      #   uses: pypa/gh-action-pypi-publish@release/v1 # This requires a trusted publisher to be setup in pypi
-      #   with: 
-      #     attestations: false
+      # Publish to dspy-ai
+      - name: Update version in setup.py (dspy-ai)
+        run: sed -i '/#replace_package_version_marker/{n;s/version="[^"]*"/version="${{ needs.extract-tag.outputs.version }}"/;}' ./dspy/.internal_dspyai/setup.py
+      - name: Update package name in setup.py  
+        run: sed -i '/#replace_package_name_marker/{n;s/name="[^"]*"/name="dspy-ai-hmoazam"/;}' ./dspy/.internal_dspyai/setup.py
+      - name: Update dspy dependency version in setup.py  
+        run: |
+          sed -i '/#replace_dspy_version_marker/{n;s/dspy==[^"]*/dspy>=${{ needs.extract-tag.outputs.version }}/;}' ./dspy/.internal_dspyai/setup.py  
+      - name: Build a binary wheel
+        run: python3 ./dspy/.internal_dspyai/setup.py sdist bdist_wheel
+      - name: Publish distribution 📦 to PyPI (dspy-ai)
+        uses: pypa/gh-action-pypi-publish@release/v1 # This requires a trusted publisher to be setup in pypi
+        with: 
+          attestations: false
       - uses: stefanzweifel/git-auto-commit-action@v5 # auto commit changes to main
         with:
           commit_message: Update versions

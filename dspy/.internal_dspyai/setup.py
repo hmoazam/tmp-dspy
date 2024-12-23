@@ -6,7 +6,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     #replace_package_name_marker
-    name="dspy-ai-hmoazam",
+    name="dspy-ai-xyz",
     #replace_package_version_marker
     version="2.7.25", 	
     description="DSPy",	
