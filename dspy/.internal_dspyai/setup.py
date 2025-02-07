@@ -6,9 +6,9 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     #replace_package_name_marker
-    name="dspy-ai-xyz",
+    name = "dspy-ai-xyz",
     #replace_package_version_marker
-    version="2.7.25", 	
+    version = "2.7.25", 	
     description="DSPy",	
     long_description=long_description,	
     long_description_content_type="text/markdown",	
@@ -19,5 +19,5 @@ setup(
     packages=find_packages(include=["dsp.*", "dspy.*", "dsp", "dspy"]),	
     python_requires=">=3.9",
     #replace_dspy_version_marker
-    install_requires=["dspy>=2.5.3"]
+    install_requires = ["dspy>=2.5.3"]
 )
