@@ -107,20 +107,12 @@
         - name: Update dspy dependency for dspy-ai release 
           run: |
             sed -i '/#replace_dspy_version_marker/{n;s/dspy *>= *"[^"]*/dspy>=${{ needs.extract-tag.outputs.version }}/;}' ./dspy/.internal_dspyai/pyproject.toml
-        - name: Print current directory  
-          run: pwd  
-        - name: List files in current directory  
-          run: ls -la  
-        - name: find directory!
-          run: ls -la dspy/
         - name: Build a binary wheel (dspy-ai)
-          run: python3 -m build ./dspy/.internal_dspy_ai/
-        - name: List distribution files  
-          run: ls -l ./dspy/.internal_dspy_ai/dist  
+          run: python3 -m build ./dspy/.internal_dspyai/
         - name: Publish distribution 📦 to PyPI (dspy-ai)
           uses: pypa/gh-action-pypi-publish@release/v1
           with: 
-            packages-dir: ./dspy/.internal_dspy_ai/dist/
+            packages-dir: ./dspy/.internal_dspyai/dist/
             attestations: false
         - uses: stefanzweifel/git-auto-commit-action@v5 # auto commit changes to main
           with:
