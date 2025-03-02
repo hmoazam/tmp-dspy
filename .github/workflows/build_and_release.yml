@@ -108,6 +108,9 @@
         - name: Build a binary wheel (dspy-ai)
           working-directory: ./dspy/.internal_dspyai
           run: python3 -m build
+        - name: List distribution files  
+          working-directory: ./dspy/.internal_dspy_ai
+          run: ls -l dist  
         - name: Publish distribution 📦 to PyPI (dspy-ai)
           uses: pypa/gh-action-pypi-publish@release/v1
           with: 
