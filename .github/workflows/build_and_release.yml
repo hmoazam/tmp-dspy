@@ -105,6 +105,10 @@
         - name: Update dspy dependency for dspy-ai release 
           run: |
             sed -i '/#replace_dspy_version_marker/{n;s/dspy *>= *"[^"]*/dspy>=${{ needs.extract-tag.outputs.version }}/;}' ./dspy/.internal_dspyai/pyproject.toml
+        # prevent intereference between dspy-ai and dspy pyproject.toml's
+        - name: Temporarily remove pyproject.toml  
+          run: mv pyproject.toml pyproject.toml.bak
+
         - name: Build a binary wheel (dspy-ai)
           working-directory: ./dspy/.internal_dspyai
           run: python3 -m build
@@ -112,9 +116,11 @@
           uses: pypa/gh-action-pypi-publish@release/v1
           with: 
             attestations: false
-        # # Restore name to dspy for git commit
-        # - name: Restore package name to dspy
-        #   run: sed -i '/#replace_package_name_marker/{n;s/name *= *"[^"]*"/name="dspy"/;}' pyproject.toml
+            
+        # prevent intereference between dspy-ai and dspy pyproject.toml's
+        - name: Restore pyproject.toml  
+          run: mv pyproject.toml.bak pyproject.toml 
+
         - uses: stefanzweifel/git-auto-commit-action@v5 # auto commit changes to main
           with:
             commit_message: Update versions
