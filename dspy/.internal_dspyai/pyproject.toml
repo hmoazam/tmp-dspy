@@ -4,8 +4,7 @@ name = "dspy-ai"
 #replace_package_version_marker
 version = "2.6.5"  
 description = "DSPy"  
-readme = "README.md"  
-readme-content-type = "text/markdown"  
+readme = "README.md"
 authors = [  
     { name = "Omar Khattab", email = "okhattab@stanford.edu" }  
 ]  
