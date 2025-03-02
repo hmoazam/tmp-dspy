@@ -106,11 +106,9 @@
           run: |
             sed -i '/#replace_dspy_version_marker/{n;s/dspy *>= *"[^"]*/dspy>=${{ needs.extract-tag.outputs.version }}/;}' ./dspy/.internal_dspyai/pyproject.toml
         - name: Build a binary wheel (dspy-ai)
-          working-directory: ./dspy/.internal_dspyai
-          run: python3 -m build
+          run: python3 -m build ./dspy/.internal_dspy_ai/
         - name: List distribution files  
-          working-directory: ./dspy/.internal_dspy_ai
-          run: ls -l dist  
+          run: ls -l ./dspy/.internal_dspy_ai/dist  
         - name: Publish distribution 📦 to PyPI (dspy-ai)
           uses: pypa/gh-action-pypi-publish@release/v1
           with: 
