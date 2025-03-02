@@ -91,6 +91,8 @@
           run: sed -i '/#replace_package_name_marker/{n;s/name *= *"[^"]*"/name="test-pkg-hmoazam"/;}' pyproject.toml
         - name: Update package name in metadata.py
           run: sed -i '/#replace_package_name_marker/{n;s/__name__ *= *"[^"]*"/name="test-pkg-hmoazam"/;}' ./dspy/__metadata__.py
+        - name: Print current directory  
+          run: pwd 
         - name: Build a binary wheel
           run: python3 -m build
         - name: Publish distribution 📦 to PyPI (dspy)
