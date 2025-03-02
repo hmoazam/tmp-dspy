@@ -109,6 +109,8 @@
             sed -i '/#replace_dspy_version_marker/{n;s/dspy *>= *"[^"]*/dspy>=${{ needs.extract-tag.outputs.version }}/;}' ./dspy/.internal_dspyai/pyproject.toml
         - name: Print current directory  
           run: pwd  
+        - name: List files in current directory  
+          run: ls -la  
         - name: Build a binary wheel (dspy-ai)
           run: python3 -m build ./dspy/.internal_dspy_ai/
         - name: List distribution files  
