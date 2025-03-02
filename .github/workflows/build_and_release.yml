@@ -112,7 +112,7 @@
         - name: List files in current directory  
           run: ls -la  
         - name: find directory!
-          run: ls -l dspy/.internal_dspy_ai/dist  
+          run: ls -l dspy/
         - name: Build a binary wheel (dspy-ai)
           run: python3 -m build ./dspy/.internal_dspy_ai/
         - name: List distribution files  
