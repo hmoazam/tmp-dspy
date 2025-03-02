@@ -67,7 +67,7 @@
     build-and-publish-pypi:
       needs: [extract-tag, build-and-publish-test-pypi]
       # Only publish to PyPI if the repository owner is stanfordnlp
-      if: github.repository_owner == 'stanfordnlp'
+      # if: github.repository_owner == 'stanfordnlp'
       runs-on: ubuntu-latest
       environment: 
         name: pypi
